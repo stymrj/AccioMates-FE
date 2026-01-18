@@ -1,32 +1,17 @@
-import React from "react"
-import { Route, Routes, Navigate } from "react-router-dom"
-import Navbar from "./components/Navbar"
-import Login from "./components/Login"
-import Signup from "./components/Signup"
-import ProtectedRoutes from "./utils/ProtectedRoutes"
-import Dashboard from "./components/Dashboard"
-import Home from "./components/Home"
+import React, { useEffect } from 'react';
+import { useAppDispatch } from './redux/hooks';
+import { fetchUserData } from './redux/slices/authSlice';
+import AppRouter from './routes/AppRouter';
 
-const App = () => {
-  return (
-    <>
-      <Navbar />
-      
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/' element={<Navigate to="/home" />} />
-        <Route path='/home' element={<Home />} />
+function App() {
+  const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    // Check if user is already logged in
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/dashboard' element={<Dashboard />} />
-        </Route>
-
-        <Route path='*' element={<Navigate to="/home" />} />
-      </Routes>
-    </>
-  )
+  return <AppRouter />;
 }
 
-export default App
+export default App;

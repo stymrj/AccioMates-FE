@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Lock, Eye, EyeOff } from 'lucide-react';
 
 const PasswordInput = ({ 
@@ -77,7 +77,7 @@ const PasswordInput = ({
       )}
       
       {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
-      
+
       {showStrength && (
         <p className="text-xs text-gray-500 mt-1">
           Must contain 8+ characters, uppercase, lowercase, number & symbol

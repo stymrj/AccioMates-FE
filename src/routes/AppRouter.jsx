@@ -6,10 +6,12 @@ import SignInPage from '../pages/SignInPage';
 import Dashboard from '../pages/Dashboard';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Navbar from '../components/common/Navbar';
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
+    <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         
